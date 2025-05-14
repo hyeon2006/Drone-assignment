@@ -21,9 +21,16 @@ def partition(pivot, xs):
     return left, right
 
 
-with open("numbers.txt", "r") as file:
+with open("./unsorted integer (100만개).txt", "r") as file:
     lines = file.readlines()
 
-drone = Drone()
+# 문자열을 실수로 변환
+numbers = [float(line.strip()) for line in lines if line.strip()]
+
+# 퀵정렬 사용
+sorted_numbers = quicksort(numbers)
+print(sorted_numbers)
+
+"""drone = Drone()
 drone.pair()
-drone.takeoff()
+drone.takeoff()"""

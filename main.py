@@ -17,7 +17,7 @@ def partition(pivot, xs):
             left.append(xs[0])
         else:
             right.append(xs[0])
-            xs = xs[1:]
+        xs = xs[1:]
     return left, right
 
 
@@ -29,7 +29,9 @@ numbers = [float(line.strip()) for line in lines if line.strip()]
 
 # 퀵정렬 사용
 sorted_numbers = quicksort(numbers)
-print(sorted_numbers)
+with open("sorted_numbers.txt", "w") as outfile:
+    for num in sorted_numbers:
+        outfile.write(str(num) + "\n")
 
 """drone = Drone()
 drone.pair()

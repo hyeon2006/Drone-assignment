@@ -2,12 +2,26 @@ from codrone_edu.drone import *
 
 
 def quicksort(xs):
-    if len(xs) > 1:
-        pivot = xs[0]
-        (left, right) = partition(pivot, xs[1:])
-        return quicksort(left) + [pivot] + quicksort(right)
-    else:
-        return xs
+    stack = [(0, len(xs) - 1)]
+    result = xs[:]
+
+    while stack:
+        start, end = stack.pop()
+        if start >= end:
+            continue
+
+        pivot = result[start]
+        left_part, right_part = partition(pivot, result[start + 1 : end + 1])
+
+        new_section = left_part + [pivot] + right_part
+        result[start : end + 1] = new_section
+
+        pivot_index = start + len(left_part)
+
+        stack.append((start, pivot_index - 1))
+        stack.append((pivot_index + 1, end))
+
+    return result
 
 
 def partition(pivot, xs):
@@ -21,11 +35,11 @@ def partition(pivot, xs):
     return left, right
 
 
-with open("./unsorted integer (100만개).txt", "r") as file:
+with open("unsorted_integer.txt", "r") as file:
     lines = file.readlines()
 
 # 문자열을 실수로 변환
-numbers = [float(line.strip()) for line in lines if line.strip()]
+numbers = [int(line.strip()) for line in lines if line.strip()]
 
 # 퀵정렬 사용
 sorted_numbers = quicksort(numbers)

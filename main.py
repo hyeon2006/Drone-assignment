@@ -1,52 +1,42 @@
 from codrone_edu.drone import *
+import time
 
 
 def quicksort(xs):
-    stack = [(0, len(xs) - 1)]
-    result = xs[:]
-
-    while stack:
-        start, end = stack.pop()
-        if start >= end:
-            continue
-
-        pivot = result[start]
-        left_part, right_part = partition(pivot, result[start + 1 : end + 1])
-
-        new_section = left_part + [pivot] + right_part
-        result[start : end + 1] = new_section
-
-        pivot_index = start + len(left_part)
-
-        stack.append((start, pivot_index - 1))
-        stack.append((pivot_index + 1, end))
-
-    return result
+    if len(xs) > 1:
+        pivot = xs[0]
+        (left, right) = partition(pivot, xs[1:])
+        return quicksort(left) + [pivot] + quicksort(right)
+    else:
+        return xs
 
 
 def partition(pivot, xs):
     left, right = [], []
-    while xs != []:
-        if xs[0] <= pivot:
-            left.append(xs[0])
+    for x in xs:
+        if x <= pivot:
+            left.append(x)
         else:
-            right.append(xs[0])
-        xs = xs[1:]
+            right.append(x)
     return left, right
 
 
-with open("unsorted_integer.txt", "r") as file:
-    lines = file.readlines()
+# ----------- 타이머 코드 -----------#
+start_time = time.time()
+# ----------- 정렬할 파일 읽기 코드 -----------#
+with open("unsorted integer (100만개 샘플).txt", "r") as file:
+    numbers = [int(line.strip()) for line in file if line.strip()]
 
-# 문자열을 실수로 변환
-numbers = [int(line.strip()) for line in lines if line.strip()]
-
-# 퀵정렬 사용
+# ----------- 퀵정렬 코드 -----------#
 sorted_numbers = quicksort(numbers)
+# ----------- 파일 출력 코드 -----------#
 with open("sorted_numbers.txt", "w") as outfile:
     for num in sorted_numbers:
         outfile.write(str(num) + "\n")
 
-"""drone = Drone()
-drone.pair()
-drone.takeoff()"""
+# ----------- 시간 코드 -----------#
+end_time = time.time()
+
+elapsed_time = round(end_time - start_time)
+
+print(f"정렬에 걸린 시간: {elapsed_time}초")

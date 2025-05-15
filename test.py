@@ -2,76 +2,77 @@ from codrone_edu.drone import *
 import main
 
 
-def forward(times):
+def format():
+    drone.set_throttle(0)
+    drone.set_pitch(0)
+    drone.set_roll(0)
+    drone.set_yaw(0)
+
+
+def forward(power, duration):
     """
     전방으로 1초간 비행
 
     :param times: 비행횟수, 높은 고도에서 3회 비행시 약 1m 비행
     """
-    for i in range(times):
-        drone.set_pitch(30)
-        drone.move(1)
-        drone.set_pitch(0)
+    drone.set_pitch(power)
+    drone.move(duration)
+    drone.set_pitch(0)
 
 
-def backward(times):
+def backward(power, duration):
     """
     후방으로 1초간 비행
 
     :param times: 비행횟수, 높은 고도에서 3회 비행시 약 1m 비행
     """
-    for i in range(times):
-        drone.set_pitch(-30)
-        drone.move(1)
-        drone.set_pitch(0)
+    drone.set_pitch(-power)
+    drone.move(duration)
+    drone.set_pitch(0)
 
 
-def up(times):
+def up(power, duration):
     """
     위로 1초간 비행
 
     :param times: 비행횟수,
     """
-    for i in range(times):
-        drone.set_throttle(30)
-        drone.move(1)
-        drone.set_throttle(0)
+    drone.set_throttle(power)
+    drone.move(duration)
+    drone.set_throttle(0)
 
 
-def down(times):
+def down(power, duration):
     """
     아래로 1초간 비행
 
     :param times: 비행횟수,
     """
-    for i in range(times):
-        drone.set_throttle(-30)
-        drone.move(1)
-        drone.set_throttle(0)
+    drone.set_throttle(-power)
+    drone.move(duration)
+    drone.set_throttle(0)
 
 
-def spinL(times):
+def spinL(power, duration):
     """
     왼쪽으로 1초간 회전
 
     :param times: 회전횟수
     """
-    for i in range(times):
-        drone.set_yaw(25)
-        drone.move(1)
-        drone.set_yaw(0)
+    drone.set_yaw(power)
+    drone.move(duration)
+    drone.set_yaw(0)
 
 
-def spinR(times):
+def spinR(power, duration):
     """
     오른쪽으로 1초간 회전
 
     :param times: 회전횟수
     """
-    for i in range(times):
-        drone.set_yaw(-25)
-        drone.move(1)
-        drone.set_yaw(0)
+    drone.set_yaw(-power)
+    drone.move(duration)
+    drone.set_yaw(0)
 
 
 def buzz():
@@ -86,24 +87,24 @@ drone = Drone()
 
 # 드론 페어링
 drone.pair()
+format()
 # buzz()
 drone.takeoff()
 
-up(1)
-forward(4)
-down(3)
-forward(2)
-up(8)
-forward(3)
-down(6)
-forward(2)
-up(6)
-spinL(2)
+forward(28, 5)
+down(30, 1)
+forward(35, 2)
+up(40, 5)
+forward(30, 4)
+down(30, 4)
+forward(30, 3)
+up(30, 4)
+spinL(25, 3)
 # buzz()
-forward(12)
-spinL(6)
-forward(3)
-spinL(1)
+forward(30, 4)
+spinL(25, 6)
+forward(30, 4)
+spinL(25, 8)
 # buzz()
 drone.hover(5)
 # main.sorting()

@@ -1,5 +1,5 @@
 from codrone_edu.drone import *
-import main
+import sort
 
 
 def format():
@@ -11,9 +11,10 @@ def format():
 
 def forward(power, duration):
     """
-    전방으로 1초간 비행
+    전방으로 비행
 
-    :param times: 비행횟수, 높은 고도에서 3회 비행시 약 1m 비행
+    :param power: 비행속도
+    :param duration: 비행시간
     """
     drone.set_pitch(power)
     drone.move(duration)
@@ -22,9 +23,10 @@ def forward(power, duration):
 
 def backward(power, duration):
     """
-    후방으로 1초간 비행
+    후방방으로 비행
 
-    :param times: 비행횟수, 높은 고도에서 3회 비행시 약 1m 비행
+    :param power: 비행속도
+    :param duration: 비행시간
     """
     drone.set_pitch(-power)
     drone.move(duration)
@@ -33,9 +35,10 @@ def backward(power, duration):
 
 def up(power, duration):
     """
-    위로 1초간 비행
+    위로 비행
 
-    :param times: 비행횟수,
+    :param power: 비행속도
+    :param duration: 비행시간
     """
     drone.set_throttle(power)
     drone.move(duration)
@@ -44,9 +47,10 @@ def up(power, duration):
 
 def down(power, duration):
     """
-    아래로 1초간 비행
+    아래로 비행
 
-    :param times: 비행횟수,
+    :param power: 비행속도
+    :param duration: 비행시간
     """
     drone.set_throttle(-power)
     drone.move(duration)
@@ -55,9 +59,10 @@ def down(power, duration):
 
 def spinL(power, duration):
     """
-    왼쪽으로 1초간 회전
+    왼쪽방향으로 회전
 
-    :param times: 회전횟수
+    :param power: 비행속도
+    :param duration: 비행시간
     """
     drone.set_yaw(power)
     drone.move(duration)
@@ -66,9 +71,10 @@ def spinL(power, duration):
 
 def spinR(power, duration):
     """
-    오른쪽으로 1초간 회전
+    오른쪽방향으로 회전
 
-    :param times: 회전횟수
+    :param power: 비행속도
+    :param duration: 비행시간
     """
     drone.set_yaw(-power)
     drone.move(duration)
@@ -91,23 +97,24 @@ format()
 # buzz()
 drone.takeoff()
 
-forward(28, 5)
-down(30, 1)
+up(40, 1)
+forward(28, 4.5)
+down(30, 3.75)
 forward(35, 2)
 up(40, 5)
-forward(30, 4)
-down(30, 4)
-forward(30, 3)
+forward(30, 3.5)
+down(30, 6)
+forward(30, 2.5)
 up(30, 4)
 spinL(25, 3)
 # buzz()
+forward(30, 2)
+spinL(25, 4)
 forward(30, 4)
-spinL(25, 6)
-forward(30, 4)
-spinL(25, 8)
+spinL(30, 10)
 # buzz()
 drone.hover(5)
-# main.sorting()
+# sort.sorting()
 
 
 drone.land()

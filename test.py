@@ -23,7 +23,7 @@ def forward(power, duration):
 
 def backward(power, duration):
     """
-    후방방으로 비행
+    후방으로 비행
 
     :param power: 비행속도
     :param duration: 비행시간
@@ -83,7 +83,7 @@ def spinR(power, duration):
 
 def right(power, duration):
     """
-    오른쪽방향으로 회전
+    오른쪽방향으로 이동
 
     :param power: 비행속도
     :param duration: 비행시간
@@ -95,7 +95,7 @@ def right(power, duration):
 
 def left(power, duration):
     """
-    왼쪽방향으로 회전
+    왼쪽방향으로 이동
 
     :param power: 비행속도
     :param duration: 비행시간

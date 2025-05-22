@@ -15,6 +15,15 @@ def forward(power, duration):
     전방으로 비행
 
     :param power: 비행속도
+    :param duration: 비행시간
+    """
+    drone.set_pitch(power)
+    drone.move(duration)
+    drone.set_pitch(0)
+
+
+def backward(power, duration):
+    """
     후방으로 비행
 
     :param power: 비행속도

@@ -126,15 +126,17 @@ format()
 buzz()
 drone.takeoff()
 up(50, 1)
+# 첫 허들 시작
 forward(50, 4)
 down(70, 3.5)
 forward(50, 1.9)
-# 첫번째 허들 완
+# 첫번째 허들 완, 두번째 허들 시작
 up(46, 2.4)
 forward(50, 2.75)
-# 두번째 허들 완
+# 두번째 허들 완, 세번째 허들 시작
 down(70, 3.25)
 forward(50, 2.1)
+# 세번째 허들 완
 up(50, 1.5)
 spinL(100, 1.5)
 drone.hover(1)

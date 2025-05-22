@@ -18,7 +18,7 @@ def timeend(st):
 
     print("실행 시간:", rt)
 
-    f = open("./Time Print.txt", "w")
+    f = open("./sb-a03-c4-time_out.txt", "w")
 
     f.write(
         "start_time : "

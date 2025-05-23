@@ -129,15 +129,15 @@ up(50, 1)
 # 첫 허들 시작
 forward(50, 4)
 down(70, 3.5)
-forward(50, 1.9)
+forward(50, 2.5)
 # 첫번째 허들 완, 두번째 허들 시작
-up(46, 2.4)
+up(46, 3)
 forward(50, 2.75)
 # 두번째 허들 완, 세번째 허들 시작
 down(70, 3.25)
-forward(50, 2.1)
+forward(50, 2.5)
 # 세번째 허들 완
-up(50, 1.5)
+up(80, 1.75)
 spinL(100, 1.5)
 drone.hover(1)
 buzz()
@@ -145,7 +145,7 @@ forward(50, 3.5)
 left(50, 1)
 backward(50, 1)
 right(50, 1)
-forward(50, 2.75)
+forward(50, 3.5)
 spinL(100, 1.5)
 drone.hover(1)
 buzz()
@@ -153,7 +153,7 @@ buzz()
 drone.hover(5)
 sort.sorting()
 
-forward(50, 5.5)
+forward(50, 5.4)
 
 
 drone.land()

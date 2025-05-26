@@ -127,7 +127,7 @@ buzz()
 drone.takeoff()
 up(50, 1)
 # 첫 허들 시작
-forward(50, 3.25)
+forward(50, 2.75)
 down(70, 3.9)
 forward(50, 2.4)
 # 첫번째 허들 완, 두번째 허들 시작
